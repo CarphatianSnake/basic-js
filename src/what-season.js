@@ -15,7 +15,7 @@ function getSeason(date) {
     return "Unable to determine the time of year!";
   }
 
-  if (!(date instanceof Date)) {
+  if (!(date instanceof Date) || date[Symbol.toStringTag]) {
     throw new Error("Invalid date!");
   }
 
@@ -35,8 +35,6 @@ function getSeason(date) {
 
   return "winter";
 }
-
-console.log(getSeason(new Date(2019, 7, 8, 9, 10, 11)));
 
 module.exports = {
   getSeason
